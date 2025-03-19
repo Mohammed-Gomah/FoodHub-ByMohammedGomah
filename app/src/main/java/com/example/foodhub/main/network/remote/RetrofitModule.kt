@@ -1,4 +1,4 @@
-package com.example.network
+package com.example.foodhub.main.network.remote
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

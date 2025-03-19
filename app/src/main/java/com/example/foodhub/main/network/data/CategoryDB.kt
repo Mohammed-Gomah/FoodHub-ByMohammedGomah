@@ -1,4 +1,4 @@
-package com.example.network.data
+package com.example.foodhub.main.network.data
 
 
 import com.google.gson.annotations.SerializedName

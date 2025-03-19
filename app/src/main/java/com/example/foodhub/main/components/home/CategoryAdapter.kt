@@ -5,9 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.foodhub.databinding.CategoryItemBinding
-import com.example.network.data.Category
+import com.example.foodhub.main.network.data.Category
 
-class CategoryAdapter(private val categoryList: List<Category>) :
+class CategoryAdapter(private var categoryList: List<Category>) :
     RecyclerView.Adapter<CategoryAdapter.ItemViewHolder>() {
     inner class ItemViewHolder(val binding: CategoryItemBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -32,5 +32,10 @@ class CategoryAdapter(private val categoryList: List<Category>) :
                     .into(ivCategory)
             }
         }
+    }
+
+    fun setCategories(newCategoriesList: List<Category>) {
+        categoryList = newCategoriesList
+        notifyDataSetChanged()
     }
 }

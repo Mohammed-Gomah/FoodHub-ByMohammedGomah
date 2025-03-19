@@ -1,6 +1,6 @@
-package com.example.network
+package com.example.foodhub.main.network.remote
 
-import com.example.network.data.CategoryDB
+import com.example.foodhub.main.network.data.CategoryDB
 import retrofit2.Response
 import retrofit2.http.GET
 
