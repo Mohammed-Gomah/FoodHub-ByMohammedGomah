@@ -20,6 +20,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/tvMeal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
@@ -41,6 +42,7 @@
                 android:src="@drawable/food_ic" />
 
             <TextView
+                android:id="@+id/tvMealCategory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Beef"
@@ -62,6 +64,7 @@
                 android:src="@drawable/location_ic" />
 
             <TextView
+                android:id="@+id/tvArea"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Egypt"
@@ -84,6 +87,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/ivMeal"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:background="@drawable/circle_image"

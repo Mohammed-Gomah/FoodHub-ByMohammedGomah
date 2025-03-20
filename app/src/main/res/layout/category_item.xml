@@ -4,6 +4,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
+    android:id="@+id/categoryItem"
     android:gravity="center"
     android:orientation="vertical">
 
@@ -36,11 +37,12 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/categoryNameBG"
         android:layout_width="75dp"
         android:layout_height="50dp"
         android:layout_marginTop="-25dp"
         android:layout_marginBottom="4dp"
-        android:background="@drawable/orange_curve_bg"
+        android:background="@drawable/orange_stroke_bg"
         android:elevation="3dp">
 
         <TextView
@@ -50,6 +52,8 @@
             android:text="SeaFood"
             android:textAlignment="center"
             android:textColor="@color/black"
+            android:lines="1"
+            android:ellipsize="end"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

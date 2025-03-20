@@ -7,7 +7,10 @@ import com.bumptech.glide.Glide
 import com.example.foodhub.databinding.CategoryItemBinding
 import com.example.foodhub.main.network.data.Category
 
-class CategoryAdapter(private var categoryList: List<Category>) :
+class CategoryAdapter(
+    private var categoryList: List<Category>,
+    private val homeViewModel: HomeViewModel
+) :
     RecyclerView.Adapter<CategoryAdapter.ItemViewHolder>() {
     inner class ItemViewHolder(val binding: CategoryItemBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -26,6 +29,9 @@ class CategoryAdapter(private var categoryList: List<Category>) :
         holder.apply {
             binding.apply {
                 categoryName.text = category.strCategory
+                categoryItem.setOnClickListener {
+                    homeViewModel.fetchMealsByCategory(category.strCategory ?: "Beef")
+                }
 
                 Glide.with(itemView.context)
                     .load(category.strCategoryThumb)
