@@ -15,4 +15,7 @@ interface ApiService {
 
     @GET("random.php")
     suspend fun fetchRandomMeal(): Response<MealDB>
+
+    @GET("lookup.php")
+    suspend fun fetchMealDetailsById(@Query("i") mealId: String): Response<MealDB>
 }

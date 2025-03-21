@@ -33,6 +33,8 @@ class CategoryAdapter(
                     homeViewModel.fetchMealsByCategory(category.strCategory ?: "Beef")
                 }
 
+
+
                 Glide.with(itemView.context)
                     .load(category.strCategoryThumb)
                     .into(ivCategory)

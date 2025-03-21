@@ -1,7 +1,8 @@
 package com.example.foodhub.main.components.home
 
-import android.icu.text.Transliterator.Position
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,8 +10,6 @@ import android.widget.LinearLayout
 import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.DefaultLifecycleObserver
-import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -18,7 +17,6 @@ import com.example.foodhub.R
 import com.example.foodhub.databinding.FragmentHomeBinding
 import com.google.android.material.carousel.CarouselLayoutManager
 import com.google.android.material.carousel.CarouselSnapHelper
-import kotlin.concurrent.fixedRateTimer
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -69,7 +67,6 @@ class HomeFragment : Fragment() {
         homeViewModel.randomMeals.observe(viewLifecycleOwner) { meals ->
             randomMealsAdapter.setMeals(meals)
             carouselAdapter.setRandomMeals(meals.take(5))
-
             setupIndicators(meals.take(5).size) // إنشاء المؤشرات بناءً على عدد العناصر
         }
         homeViewModel.fetchRandomMeals()

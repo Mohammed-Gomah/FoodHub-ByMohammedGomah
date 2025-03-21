@@ -1,5 +1,7 @@
 package com.example.foodhub.main.components.home
 
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -24,6 +26,13 @@ class MealsAdapter(private var mealList:List<Meal>) : RecyclerView.Adapter<Meals
 
         holder.apply {
             binding.apply {
+                tvMealName.text = meal.strMeal ?: "not found"
+                category.text = meal.strCategory ?: "not found"
+                area.text = meal.strArea ?: "not found"
+                layerWatchVideo.setOnClickListener {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(meal.strYoutube))
+                    itemView.context.startActivity(intent)
+                }
                 Glide.with(itemView.context)
                     .load(meal.strMealThumb)
                     .into(ivMeal)

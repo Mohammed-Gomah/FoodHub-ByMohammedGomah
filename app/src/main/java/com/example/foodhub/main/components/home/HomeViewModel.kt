@@ -9,6 +9,8 @@ import androidx.lifecycle.viewModelScope
 import com.example.foodhub.main.network.data.Category
 import com.example.foodhub.main.network.data.Meal
 import com.example.foodhub.main.network.remote.MainRepository
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
 
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
@@ -43,7 +45,22 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
             viewModelScope.launch {
                 val response = repository.apiService.fetchMealsByCategory(categoryName)
                 if (response.isSuccessful) {
-                    _meals.postValue(response.body()?.meals?.filterNotNull() ?: emptyList())
+
+                   val mealList =  response.body()?.meals?.filterNotNull() ?: emptyList()
+                    val updatedMeals = mealList.map { meal ->
+                        async {
+                            val deferredMeal =
+                                async { meal.idMeal?.let { fetchMealDetailsById(it) } }.await()
+
+                            meal.copy(
+                                strArea = deferredMeal?.strArea,
+                                strCategory = deferredMeal?.strCategory,
+                                strYoutube = deferredMeal?.strYoutube
+                            )
+                        }
+                    }.awaitAll()
+                    _meals.postValue(updatedMeals)
+
                 } else {
                     Log.e(TAG, "fetchMealsByCategory: ${response.body()}")
                 }
@@ -60,7 +77,9 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                 repeat(10) {
                     val response = repository.apiService.fetchRandomMeal()
                     if (response.isSuccessful) {
-                        response.body()?.meals?.random()?.let { it1 -> randomMealList.add(it1) }
+                        val randomResponse =
+                            response.body()?.meals?.random()
+                        randomResponse?.let { it1 -> randomMealList.add(it1) }
                     } else {
                         Log.e(TAG, "fetchRandomMeals: ${response.body()}")
                     }
@@ -69,6 +88,19 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
             }
         } catch (e: Exception) {
             Log.e(TAG, "fetchRandomMeals: ${e.message}")
+        }
+    }
+
+    private suspend fun fetchMealDetailsById(mealId: String): Meal? {
+        return try {
+            val response = repository.apiService.fetchMealDetailsById(mealId)
+            if (response.isSuccessful) {
+                response.body()?.meals?.filterNotNull()?.firstOrNull()
+            } else {
+                null
+            }
+        } catch (e: Exception) {
+            null
         }
     }
 
