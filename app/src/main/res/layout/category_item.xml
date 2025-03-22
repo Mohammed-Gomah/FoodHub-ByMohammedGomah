@@ -8,6 +8,7 @@
     android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/categoryImageBG"
         android:layout_width="80dp"
         android:layout_height="75dp"
         android:layout_margin="8dp"
@@ -38,7 +39,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="-30dp"
         android:layout_marginBottom="4dp"
-        android:background="@drawable/orange_stroke_bg"
+        android:background="@drawable/orange_stroke_bg16"
         android:elevation="3dp">
 
         <TextView
@@ -47,7 +48,7 @@
             android:layout_height="wrap_content"
             android:text="SeaFood"
             android:textAlignment="center"
-            android:textColor="@color/black"
+            android:textColor="@color/primary_color"
             android:lines="1"
             android:ellipsize="end"
             android:textSize="12sp"

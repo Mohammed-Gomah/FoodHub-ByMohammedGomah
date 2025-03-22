@@ -1,8 +1,6 @@
 package com.example.foodhub.main.components.home
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +8,7 @@ import android.widget.LinearLayout
 import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -44,6 +43,11 @@ class HomeFragment : Fragment() {
         observeCategories()
         observeMealsByCategory()
         fetchRandomMeals()
+
+        binding.etSearchView.setOnClickListener {
+            this@HomeFragment.findNavController()
+                .navigate(R.id.action_homeFragment_to_searchFragment)
+        }
 
     }
 

@@ -53,6 +53,7 @@
             android:textColor="@color/black2" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/searchLayer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
@@ -64,13 +65,16 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/search_view_bg"
                 android:hint="Search"
+                android:clickable="true"
+                android:focusable="false"
                 android:paddingHorizontal="48dp"
                 android:paddingVertical="10dp"
                 android:textColorHint="@color/black2"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="KeyboardInaccessibleWidget" />
 
             <ImageView
                 android:layout_width="25dp"
