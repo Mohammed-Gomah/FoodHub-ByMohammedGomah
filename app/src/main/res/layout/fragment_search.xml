@@ -98,7 +98,7 @@
             android:layout_marginTop="8dp"
             android:text="No Meals"
             android:textAlignment="center"
-            android:textColor="@color/black"
+            android:textColor="@color/primary_color"
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
