@@ -95,7 +95,6 @@ class SearchFragment : Fragment() {
             binding.ivClearText.visibility = if (s.isNullOrEmpty()) View.GONE else View.VISIBLE
         }
 
-        binding.etSearchView.requestFocus()
     }
 
     override fun onResume() {
