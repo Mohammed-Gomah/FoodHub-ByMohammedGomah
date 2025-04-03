@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodhub.R
 import com.example.foodhub.databinding.FragmentHomeBinding
+import com.example.foodhub.favourite.FavouritesViewModel
 import com.google.android.material.carousel.CarouselLayoutManager
 import com.google.android.material.carousel.CarouselSnapHelper
 
@@ -21,6 +22,7 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private val homeViewModel: HomeViewModel by viewModels()
+    private val favouritesViewModel: FavouritesViewModel by viewModels()
     private lateinit var categoryAdapter: CategoryAdapter
     private lateinit var mealsAdapter: MealsAdapter
     private lateinit var randomMealsAdapter: RandomMealsAdapter
@@ -85,7 +87,7 @@ class HomeFragment : Fragment() {
             adapter = categoryAdapter
         }
 
-        mealsAdapter = MealsAdapter(listOf())
+        mealsAdapter = MealsAdapter(listOf(), favouritesViewModel = favouritesViewModel)
         binding.rvMeals.apply {
             layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)

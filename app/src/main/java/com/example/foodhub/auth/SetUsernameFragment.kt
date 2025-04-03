@@ -1,4 +1,4 @@
-package com.example.foodhub
+package com.example.foodhub.auth
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.example.foodhub.auth.AuthViewModel
 import com.example.foodhub.databinding.FragmentSetUsernameBinding
 import com.example.foodhub.ui.MainActivity
 

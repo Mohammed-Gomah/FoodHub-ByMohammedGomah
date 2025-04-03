@@ -1,4 +1,4 @@
-package com.example.foodhub
+package com.example.foodhub.auth
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.example.foodhub.auth.AuthViewModel
+import com.example.foodhub.R
 import com.example.foodhub.databinding.FragmentResetPasswordBinding
 
 
