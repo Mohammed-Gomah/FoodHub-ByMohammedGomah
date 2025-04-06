@@ -4,13 +4,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.foodhub.R
-import com.example.foodhub.databinding.RandomsShapeItemBinding
 import com.example.foodhub.main.network.data.Meal
 
-class CarouselAdapter(private var mealImageList: List<Meal>) :
+class CarouselAdapter(private var mealList: List<Meal>) :
     RecyclerView.Adapter<CarouselAdapter.ItemViewHolder>() {
     inner class ItemViewHolder(itemView : View) :
         RecyclerView.ViewHolder(itemView){
@@ -23,20 +23,25 @@ class CarouselAdapter(private var mealImageList: List<Meal>) :
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        val mealImage = mealImageList[position]
+        val meal = mealList[position]
+
+        holder.image.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(meal)
+            holder.itemView.findNavController().navigate(action)
+        }
 
         Glide.with(holder.itemView.context)
-                .load(mealImage.strMealThumb)
+                .load(meal.strMealThumb)
                 .into(holder.image)
 
     }
 
     override fun getItemCount(): Int {
-        return mealImageList.size
+        return mealList.size
     }
 
     fun setRandomMeals(newRanImages:List<Meal>){
-        mealImageList = newRanImages
+        mealList = newRanImages
         notifyDataSetChanged()
     }
 }

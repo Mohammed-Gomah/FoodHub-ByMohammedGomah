@@ -51,7 +51,7 @@ class CategoryAdapter(
 
                 categoryItem.setOnClickListener {
                     val previousSelected = selectedPosition
-                    selectedPosition = holder.adapterPosition // تحديث الموقع المحدد
+                    selectedPosition = holder.adapterPosition
                     notifyItemChanged(previousSelected)
                     notifyItemChanged(selectedPosition)
                     homeViewModel.fetchMealsByCategory(category.strCategory ?: "Beef")

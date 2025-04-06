@@ -1,5 +1,6 @@
 package com.example.foodhub.main.network.remote
 
+import com.example.foodhub.main.network.data.AreaDB
 import com.example.foodhub.main.network.data.CategoryDB
 import com.example.foodhub.main.network.data.MealDB
 import retrofit2.Response
@@ -21,4 +22,14 @@ interface ApiService {
 
     @GET("search.php")
     suspend fun searchMealByName(@Query("s") mealName : String) : Response<MealDB>
+
+    @GET("search.php")
+    suspend fun listMealByFirstLetter(@Query("f") firstLetter: String): Response<MealDB>
+
+    @GET("filter.php")
+    suspend fun listMealByArea(@Query("a") area: String): Response<MealDB>
+
+    @GET("list.php")
+    suspend fun listAllAreas(@Query("a") area: String): Response<AreaDB>
+
 }

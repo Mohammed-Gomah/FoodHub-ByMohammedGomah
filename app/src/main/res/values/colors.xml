@@ -7,5 +7,5 @@
     <color name="primary_color">#f59000</color>
     <color name="red">#db3424</color>
     <color name="yellow">#F7FF00</color>
-    <color name="backgroundColor">#f4f4f4</color>
+    <color name="backgroundColor">#FFFFFFFF</color>
 </resources>

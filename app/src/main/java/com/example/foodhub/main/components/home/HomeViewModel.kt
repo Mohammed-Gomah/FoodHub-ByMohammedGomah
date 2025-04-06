@@ -55,7 +55,27 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                             meal.copy(
                                 strArea = deferredMeal?.strArea,
                                 strCategory = deferredMeal?.strCategory,
-                                strYoutube = deferredMeal?.strYoutube
+                                strYoutube = deferredMeal?.strYoutube,
+                                strInstructions = deferredMeal?.strInstructions,
+                                strIngredient1 = deferredMeal?.strIngredient1,
+                                strIngredient2 = deferredMeal?.strIngredient2,
+                                strIngredient3 = deferredMeal?.strIngredient3,
+                                strIngredient4 = deferredMeal?.strIngredient4,
+                                strIngredient5 = deferredMeal?.strIngredient5,
+                                strIngredient6 = deferredMeal?.strIngredient6,
+                                strIngredient7 = deferredMeal?.strIngredient7,
+                                strIngredient8 = deferredMeal?.strIngredient8,
+                                strIngredient9 = deferredMeal?.strIngredient9,
+                                strMeasure1 = deferredMeal?.strMeasure1,
+                                strMeasure2 = deferredMeal?.strMeasure2,
+                                strMeasure3 = deferredMeal?.strMeasure3,
+                                strMeasure4 = deferredMeal?.strMeasure4,
+                                strMeasure5 = deferredMeal?.strMeasure5,
+                                strMeasure6 = deferredMeal?.strMeasure6,
+                                strMeasure7 = deferredMeal?.strMeasure7,
+                                strMeasure8 = deferredMeal?.strMeasure8,
+                                strMeasure9 = deferredMeal?.strMeasure9,
+
                             )
                         }
                     }.awaitAll()

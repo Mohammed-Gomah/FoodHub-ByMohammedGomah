@@ -63,17 +63,23 @@ class HomeFragment : Fragment() {
     }
 
     private fun observeMealsByCategory() {
+        binding.pbMeals.visibility = View.VISIBLE
         homeViewModel.meals.observe(viewLifecycleOwner) { meals ->
+            binding.pbMeals.visibility = View.GONE
             mealsAdapter.setMeals(meals)
         }
         homeViewModel.fetchMealsByCategory("Beef")
     }
 
     private fun fetchRandomMeals() {
+        binding.pbRandoms.visibility = View.VISIBLE
+        binding.pbRecommended.visibility = View.VISIBLE
         homeViewModel.randomMeals.observe(viewLifecycleOwner) { meals ->
+            binding.pbRandoms.visibility = View.GONE
+            binding.pbRecommended.visibility = View.GONE
             randomMealsAdapter.setMeals(meals)
             carouselAdapter.setRandomMeals(meals.take(5))
-            setupIndicators(meals.take(5).size) // إنشاء المؤشرات بناءً على عدد العناصر
+            setupIndicators(meals.take(5).size)
         }
         homeViewModel.fetchRandomMeals()
     }
@@ -94,7 +100,7 @@ class HomeFragment : Fragment() {
             adapter = mealsAdapter
         }
 
-        randomMealsAdapter = RandomMealsAdapter(listOf())
+        randomMealsAdapter = RandomMealsAdapter(listOf() ,favouritesViewModel)
         binding.rvRandomMeals.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = randomMealsAdapter

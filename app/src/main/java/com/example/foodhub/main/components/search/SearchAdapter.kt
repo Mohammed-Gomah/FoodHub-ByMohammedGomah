@@ -2,6 +2,7 @@ package com.example.foodhub.main.components.search
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.foodhub.databinding.SearchItemBinding
@@ -25,12 +26,16 @@ class SearchAdapter(private var searchList: List<Meal>) :
         holder.apply {
             binding.apply {
                 tvMeal.text = meal.strMeal
-                tvArea.text = meal.strArea
                 tvMealCategory.text = meal.strCategory
 
                 Glide.with(itemView.context)
                     .load(meal.strMealThumb)
                     .into(ivMeal)
+
+                ivMeal.setOnClickListener {
+                    val action = SearchFragmentDirections.actionSearchFragmentToDetailsFragment(meal)
+                    itemView.findNavController().navigate(action)
+                }
             }
         }
     }

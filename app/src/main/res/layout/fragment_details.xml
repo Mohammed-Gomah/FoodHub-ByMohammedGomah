@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:fillViewport="true"
     android:layout_width="match_parent"
     android:background="@color/backgroundColor"
     android:layout_height="match_parent"
@@ -19,13 +20,20 @@
             android:layout_marginTop="32dp"
             android:gravity="center"
             android:orientation="horizontal">
+            <LinearLayout
+                android:id="@+id/backArrowLayout"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/orange_stroke_bg">
+                <ImageView
+                    android:id="@+id/ivBackArrow"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/back_arrow"
+                    android:padding="8dp"/>
 
-            <ImageView
-                android:id="@+id/ivBackArrow"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/back_arrow"
-                app:tint="@color/primary_color" />
+            </LinearLayout>
 
             <TextView
                 android:textAlignment="center"
@@ -38,16 +46,26 @@
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/category_ic"/>
+            <LinearLayout
+                android:id="@+id/favouriteLayout0"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/orange_stroke_bg">
+                <ImageView
+                    android:id="@+id/favouriteToggle0"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/favourite_border"
+                    android:padding="8dp"/>
 
+            </LinearLayout>
         </LinearLayout>
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="220dp"
+            app:cardElevation="0dp"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="24sp"
             app:cardCornerRadius="8dp">
@@ -84,52 +102,48 @@
             <ImageView
                 android:layout_width="16dp"
                 android:layout_height="16dp"
+                app:tint="@color/black"
                 android:layout_marginHorizontal="4dp"
                 android:src="@drawable/food_ic" />
 
             <TextView
                 android:id="@+id/tvCategoryName"
                 android:layout_width="wrap_content"
-                android:textColor="@color/primary_color"
+                android:textSize="14sp"
+                android:textColor="@color/black"
                 android:layout_height="wrap_content"
                 android:text="Beef" />
-
         </LinearLayout>
-        <LinearLayout
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvIngredients"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
+            tools:itemCount="4"
             android:layout_marginTop="8dp"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:layout_marginHorizontal="8dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="horizontal"
+            tools:listitem="@layout/ingredient_item"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:textColor="@color/primary_color"
-                android:text="its leadership in :" />
-
-            <TextView
-                android:id="@+id/tvAreaName"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_marginHorizontal="4dp"
-                android:textSize="14sp"
-                android:textColor="@color/primary_color"
-                android:layout_height="wrap_content"
-                android:text="Egypt" />
-
-        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/black"
+            android:text="Instructions"
+            android:layout_marginHorizontal="16dp"/>
 
         <TextView
             android:id="@+id/tvMealDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:alpha="0.5"
             android:text="Bring a large pot of water to a boil. Add kosher salt to the boiling water, then add the pasta. Cook according to the package instructions, about 9 minutes.\r\nIn a large skillet over medium-high heat, add the olive oil and heat until the oil starts to shimmer. Add the garlic and cook, stirring, until fragrant, 1 to 2 minutes. Add the chopped tomatoes, red chile flakes, Italian seasoning and salt and pepper to taste. Bring to a boil and cook for 5 minutes. Remove from the heat and add the chopped basil.\r\nDrain the pasta and add it to the sauce. Garnish with Parmigiano-Reggiano flakes and more basil and serve warm"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginTop="8dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -149,15 +163,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:textColor="@color/black"
                     android:textStyle="bold"
-                    android:text="Youtube"/>
-                <ImageView
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_marginHorizontal="4dp"
-                    android:src="@drawable/youtube_icon"/>
+                    android:text="Watch Youtube Video"/>
+
             </LinearLayout>
 
             <LinearLayout
@@ -176,6 +186,9 @@
             </LinearLayout>
         </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="16dp"/>
     </LinearLayout>
 
-</FrameLayout>
+</androidx.core.widget.NestedScrollView>
