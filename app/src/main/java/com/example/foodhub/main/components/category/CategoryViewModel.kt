@@ -10,7 +10,6 @@ import com.example.foodhub.main.network.data.Area
 import com.example.foodhub.main.network.data.Meal
 import com.example.foodhub.main.network.remote.MainRepository
 import kotlinx.coroutines.launch
-import okhttp3.internal.notifyAll
 
 class CategoryViewModel(application: Application) : AndroidViewModel(application) {
     private val repository = MainRepository()
@@ -47,7 +46,7 @@ class CategoryViewModel(application: Application) : AndroidViewModel(application
                 if (response.isSuccessful) {
                     _mealByArea.postValue(response.body()?.meals?.filterNotNull())
                 } else {
-                    Log.e(TAG, "listMealsByArea: ${response.body()}")
+                    _mealByArea.postValue(emptyList())
                 }
             }
         } catch (e: Exception) {
@@ -62,7 +61,8 @@ class CategoryViewModel(application: Application) : AndroidViewModel(application
                 if (response.isSuccessful){
                     _area.postValue(response.body()?.meals?: emptyList())
                 }else{
-                    Log.e(TAG, "listAllAreas: ${response.body()}")
+                    _area.postValue(emptyList())
+
                 }
             }
         }catch (e:Exception){

@@ -83,10 +83,10 @@
     </LinearLayout>
 
     <ImageView
+        android:id="@+id/ivToggleFavourite"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:elevation="8dp"
-        app:tint="@color/primary_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
