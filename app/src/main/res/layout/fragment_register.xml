@@ -53,6 +53,7 @@
         <EditText
             android:id="@+id/etRegisterEmail"
             android:layout_width="match_parent"
+            android:textColorHint="@color/gray"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:background="@drawable/black_stroke_bg"
@@ -79,6 +80,7 @@
             android:layout_marginTop="8dp"
             android:textColor="@color/black"
             android:background="@drawable/black_stroke_bg"
+            android:textColorHint="@color/gray"
             android:hint="enter your password here"
             android:lines="1"
             android:paddingHorizontal="16sp"
@@ -101,6 +103,7 @@
             android:layout_marginTop="8dp"
             android:textColor="@color/black"
             android:background="@drawable/black_stroke_bg"
+            android:textColorHint="@color/gray"
             android:hint="confirm your password"
             android:lines="1"
             android:paddingHorizontal="16sp"
