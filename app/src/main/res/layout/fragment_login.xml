@@ -59,6 +59,7 @@
             android:background="@drawable/black_stroke_bg"
             android:hint="enter your e-mail here"
             android:lines="1"
+            android:textColor="@color/black"
             android:paddingHorizontal="16sp"
             android:paddingVertical="12dp"
             android:textSize="14sp" />
@@ -78,6 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:background="@drawable/black_stroke_bg"
+            android:textColor="@color/black"
             android:hint="enter your password here"
             android:lines="1"
             android:paddingHorizontal="16sp"
